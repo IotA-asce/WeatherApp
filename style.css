@@ -1,0 +1,125 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+body{
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.box{
+    background-color: rgba(128, 0, 128, 0.411);
+    min-height: 30em;
+    min-width: 20em;
+    border-radius: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    overflow: hidden;
+    box-shadow: -0.1em 0.1em 1em rgba(0, 0, 0, 0.616);
+}
+
+._one{
+    position: absolute;
+    top: 10em;
+    background-color: rgba(245, 245, 245, 0.726);
+    height: 40em;
+    width: 40em;
+    border-radius: 20% 80%;
+    animation: wavy1 10s linear infinite;
+}
+
+._two{
+    position: absolute;
+    top: 8em;
+    height: 40em;
+    width: 40em;
+    border-radius: 10% 70%;
+
+    background-color: rgba(245, 245, 245, 0.397);
+    animation: wavy2 8s linear infinite;
+}
+
+._three{
+    height: 3em;
+    width: 100%;
+    background-color: rgba(245, 245, 245, 0.726);
+    animation: wavy3 10s linear infinite;
+}
+
+#weathercon{
+    transform: scale(5);
+    padding-bottom: 2em;
+    /* animation: rotateImg 3s linear infinite; */
+}
+
+.fa-sun{
+    animation: rotateImg 10s linear infinite;
+}
+
+.info{
+    transform: scale(1.5);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.fa-street-view{
+    animation: shm 3s linear infinite;
+}
+
+@keyframes rotateImg {
+    0%{
+        transform: rotateZ(0deg);
+    }
+    50%{
+        transform: rotateZ(180deg);
+    }
+    100%{
+        transform: rotateZ(360deg);
+    }
+}
+
+@keyframes shm {
+    0%{
+        padding-right: 0.3em;
+    }
+    50%{
+        padding-right: 1em;
+    }
+    100%{
+        padding-right: 0.3em;
+    }
+
+}
+
+@keyframes wavy1 {
+    0%{
+        border-radius: 20% 80%;
+    }
+    50%{
+        border-radius: 80% 20%;
+    }
+    100%{
+        border-radius: 20% 80%;
+    }
+}
+
+
+@keyframes wavy2 {
+    0%{
+        border-radius: 10% 70%;
+    }
+    50%{
+        border-radius: 50% 20%;
+    }
+    100%{
+        border-radius: 10% 70%;
+    }
+}

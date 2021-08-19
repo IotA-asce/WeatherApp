@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css"
+        integrity="sha512-PgQMlq+nqFLV4ylk1gwUOgm6CtIIXkKwaIHp/PAIWHzig/lKZSEGKEysh0TCVbHJXCLN7WetD8TFecIky75ZfQ=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <!-- <link rel="stylesheet" href="./style.css"> -->
+    <title>Weather app</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .box {
+            background-color: rgba(128, 0, 128, 0.411);
+            min-height: 30em;
+            min-width: 20em;
+            border-radius: 20px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+            box-shadow: -0.1em 0.1em 1em rgba(0, 0, 0, 0.616);
+        }
+
+        ._one {
+            position: absolute;
+            top: 10em;
+            background-color: rgba(245, 245, 245, 0.726);
+            height: 40em;
+            width: 40em;
+            border-radius: 20% 80%;
+            animation: wavy1 10s linear infinite;
+        }
+
+        ._two {
+            position: absolute;
+            top: 8em;
+            height: 40em;
+            width: 40em;
+            border-radius: 10% 70%;
+
+            background-color: rgba(245, 245, 245, 0.397);
+            animation: wavy2 8s linear infinite;
+        }
+
+        ._three {
+            height: 3em;
+            width: 100%;
+            background-color: rgba(245, 245, 245, 0.726);
+            animation: wavy3 10s linear infinite;
+        }
+
+        #weathercon {
+            transform: scale(5);
+            padding-bottom: 2em;
+            /* animation: rotateImg 3s linear infinite; */
+        }
+
+        .fa-sun {
+            animation: rotateImg 10s linear infinite;
+        }
+
+        .info {
+            transform: scale(1.5);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .fa-street-view {
+            animation: shm 3s linear infinite;
+        }
+
+        @keyframes rotateImg {
+            0% {
+                transform: rotateZ(0deg);
+            }
+
+            50% {
+                transform: rotateZ(180deg);
+            }
+
+            100% {
+                transform: rotateZ(360deg);
+            }
+        }
+
+        @keyframes shm {
+            0% {
+                padding-right: 0.3em;
+            }
+
+            50% {
+                padding-right: 1em;
+            }
+
+            100% {
+                padding-right: 0.3em;
+            }
+
+        }
+
+        @keyframes wavy1 {
+            0% {
+                border-radius: 20% 80%;
+            }
+
+            50% {
+                border-radius: 80% 20%;
+            }
+
+            100% {
+                border-radius: 20% 80%;
+            }
+        }
+
+
+        @keyframes wavy2 {
+            0% {
+                border-radius: 10% 70%;
+            }
+
+            50% {
+                border-radius: 50% 20%;
+            }
+
+            100% {
+                border-radius: 10% 70%;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box">
+        <div class="wave _one"></div>
+        <div class="wave -two"></div>
+        <div class="wave -three"></div>
+
+        <div id="weathercon">
+            <i class="fas fa-sun" style="color: #eccc68"></i>
+        </div>
+
+        <div class="info">
+            <h2 class="location"><i class="fas fa-street-view"></i> {%location%}, {%country%}</h2>
+            <p id="date">vcdskv</p>
+            <h1 class="temp" id="temp_id">{%tempVal%}</h1>
+            <h3 class="tempmin_max">Min {%tempMin%} | Max {%tempMax%}</h3>
+        </div>
+    </div>
+
+    <script>
+        let curDate = document.getAnimations("date");
+        let dateInf = document.getElementById("date");
+        let weathercon = document.getElementById("weathercon");
+
+
+        // const tempStatus = "Clouds";
+        // const getCurrentDay = () => {
+        //     let currentTime = new Date();
+        //     console.log(weekday[currentTime.getDay()currentTime.getDay()]);
+        // }
+
+        const getCurrentTime = () => {
+
+            console.log(day + "/" + month + "/" + year);
+        }
+
+        const getExactTime = () => {
+
+            var weekday = [
+                "sun",
+                "mon",
+                "tue",
+                "wed",
+                "thu",
+                "fri",
+                "sat"
+            ];
+            const months = [
+                "Jan",
+                "Feb",
+                "Mar",
+                "Apr",
+                "May",
+                "June",
+                "July",
+                "Aug",
+                "Sept",
+                "Oct",
+                "Nov",
+                "Dec",
+            ];
+
+            var currentTime = new Date();
+            var month = months[currentTime.getMonth()];
+            var day = currentTime.getDate();
+            var year = currentTime.getFullYear();
+            let now = new Date();
+            let min = 0
+            let hours = now.getHours();
+            let minutes = now.getMinutes();
+
+            console.log(weekday);
+            console.log(now.getDay());
+
+            if (hours > 12) {
+                hours -= 12;
+                if (hours < 10) {
+                    dateInf.innerText = `${weekday[now.getDay()]} | ${months[now.getMonth()]} ${day} | 0${hours}:${minutes} PM`;
+                    console.log("0" + hours + ":" + minutes + " PM");
+                } else {
+                    dateInf.innerText = `${weekday[now.getDay()]} | ${months[now.getMonth()]} ${day} | ${hours}:${minutes} PM`;
+                    console.log(hours + ":" + minutes + " PM");
+                }
+            } else {
+
+                if (hours < 10) {
+                    console.log("0" + hours + ":" + minutes + " AM");
+                    dateInf.innerText = `${weekday[now.getDay()]} | ${months[now.getMonth()]} ${day} | 0${hours}:${minutes} AM`;
+                }
+                else {
+                    dateInf.innerText = `${weekday[now.getDay()]} | ${months[now.getMonth()]} ${day} | ${hours}:${minutes} AM`;
+                    console.log(hours + ":" + minutes + " AM");
+                }
+            }
+
+        };
+
+        getExactTime();
+        // getCurrentDay();
+        // getCurrentTime();
+
+    </script>
+</body>
+
+</html>
